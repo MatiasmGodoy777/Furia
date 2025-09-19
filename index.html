@@ -11,6 +11,7 @@ body{
   font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   background:#000 url("chimuelo_fondo.png") center center no-repeat;
   background-size:cover;
+  background-attachment:fixed;
   color:#fff;
   text-align:center;
   min-height:100vh;
@@ -20,9 +21,14 @@ body{
   align-items:center;
 }
 
+h1{
+  font-size:clamp(20px,5vw,36px);
+  margin:16px;
+}
+
 /* sticker area */
 .sticker-area{
-  margin-top:18px;
+  margin-top:12px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -30,8 +36,8 @@ body{
   flex-wrap:wrap;
 }
 .sticker{
-  width:260px;
-  height:260px;
+  width:clamp(160px,40vw,260px);
+  height:clamp(160px,40vw,260px);
   border-radius:20px;
   border:6px solid rgba(76,255,127,0.08);
   display:flex;
@@ -71,37 +77,32 @@ input[type=file]{display:none}
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px;
+  padding:16px;
+  flex-wrap:wrap;
 }
 .footer img{
-  max-height:120px;
-  max-width:30%; /* nunca ocupa más del 30% del ancho */
+  max-height:100px;
+  max-width:28%;
   height:auto;
 }
 .footer-text{
-  font-size:28px;
+  font-size:clamp(16px,4vw,28px);
   font-weight:bold;
   color:#fff;
   text-align:center;
-  flex:1; /* ocupa espacio entre las imágenes */
+  flex:1;
 }
 
-/* Ajustes para pantallas medianas */
-@media(max-width:768px){
-  .footer-text{font-size:22px}
-  .footer img{max-height:90px}
-}
-
-/* Ajustes para pantallas chicas */
+/* Ajustes pantallas chicas */
 @media(max-width:480px){
-  h1{font-size:22px}
-  .sticker{width:180px;height:180px}
   .footer{
     flex-direction:column;
     gap:12px;
   }
-  .footer-text{font-size:18px}
-  .footer img{max-height:70px;max-width:60%}
+  .footer img{
+    max-height:70px;
+    max-width:60%;
+  }
 }
 </style>
 </head>
@@ -150,3 +151,4 @@ function removeSticker(){
 
 </body>
 </html>
+
