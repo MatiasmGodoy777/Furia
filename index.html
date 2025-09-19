@@ -1,104 +1,157 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Chimuelo</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Chimuelo — Sticker para Auri</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background:#000 url("chimuelo_fondo.png") center center no-repeat;
+  background-size:cover;
+  background-attachment:fixed;
+  color:#fff;
+  text-align:center;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: url("fondo-chimuelo.png") no-repeat center center;
-      background-size: cover; /* Se adapta al ancho del celular */
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-    }
+h1{
+  font-size:clamp(20px,5vw,36px);
+  margin:16px;
+}
 
-    .contenedor {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+/* sticker area */
+.sticker-area{
+  margin-top:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.sticker{
+  width:clamp(160px,40vw,260px);
+  height:clamp(160px,40vw,260px);
+  border-radius:20px;
+  border:6px solid rgba(76,255,127,0.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.05);
+  box-shadow:0 12px 40px rgba(0,0,0,0.6);
+  position:relative;
+}
+.sticker img{
+  max-width:92%;
+  max-height:92%;
+  border-radius:12px;
+}
 
-    .dropzone {
-      background: rgba(0,0,0,0.5);
-      color: white;
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 15px;
-      font-size: 16px;
-    }
+.controls{
+  margin-top:12px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.btn{
+  background:#4cff7f;
+  border:none;
+  color:#000;
+  padding:10px 14px;
+  border-radius:12px;
+  font-weight:700;
+  cursor:pointer;
+}
+input[type=file]{display:none}
 
-    .botones {
-      margin-top: 10px;
-    }
+/* footer con 2 imágenes y texto en el medio */
+.footer{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px;
+  flex-wrap:wrap;
+}
+.footer img{
+  max-height:100px;
+  max-width:28%;
+  height:auto;
+}
+.footer-text{
+  font-size:clamp(16px,4vw,28px);
+  font-weight:bold;
+  color:#fff;
+  text-align:center;
+  flex:1;
+}
 
-    button {
-      background: #00ff66;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .stickers {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      padding: 15px 25px;
-    }
-
-    .stickers div {
-      text-align: center;
-    }
-
-    .stickers img {
-      max-width: 120px;
-      border-radius: 10px;
-    }
-
-    .nombre {
-      margin-top: 5px;
-      font-weight: bold;
-      color: white;
-      font-size: 14px;
-    }
-  </style>
+/* Ajustes pantallas chicas */
+@media(max-width:480px){
+  .footer{
+    flex-direction:column;
+    gap:12px;
+  }
+  .footer img{
+    max-height:70px;
+    max-width:60%;
+  }
+}
+</style>
 </head>
 <body>
-  <div class="contenedor">
-    <div class="dropzone">Agregá tu sticker aquí</div>
-    <div class="botones">
-      <button>Subir sticker</button>
-      <button>Quitar</button>
-    </div>
-  </div>
 
-  <div class="stickers">
-    <div>
-      <img src="sticker1.png" alt="Sticker 1">
-      <div class="nombre">Furia Nocturna Tatiana ✨</div>
-    </div>
-    <div>
-      <img src="sticker2.png" alt="Sticker 2">
-      <div class="nombre">Otro sticker</div>
-    </div>
+<h1>🐉 Entrenando a mi Dragón 🐉</h1>
+
+<div class="sticker-area">
+  <div class="sticker" id="stickerBox">
+    <span style="opacity:0.6;">Agregá tu sticker aquí</span>
   </div>
+</div>
+
+<div class="controls">
+  <label class="btn" for="fileInput">Subir sticker</label>
+  <button class="btn" onclick="removeSticker()">Quitar</button>
+</div>
+
+<input type="file" id="fileInput" accept="image/*">
+
+<!-- Pie de página con imágenes y texto -->
+<div class="footer">
+  <img src="imagen_izquierda.png" alt="Izquierda">
+  <div class="footer-text">Furia Nocturna Tatiana✨</div>
+  <img src="imagen_derecha.png" alt="Derecha">
+</div>
+
+<script>
+const fileInput = document.getElementById('fileInput');
+const stickerBox = document.getElementById('stickerBox');
+
+fileInput.addEventListener('change', e=>{
+  const file = e.target.files[0];
+  if(file){
+    const img = document.createElement('img');
+    img.src = URL.createObjectURL(file);
+    stickerBox.innerHTML = '';
+    stickerBox.appendChild(img);
+  }
+});
+
+function removeSticker(){
+  stickerBox.innerHTML = '<span style="opacity:0.6;">Agregá tu sticker aquí</span>';
+}
+</script>
+
 </body>
 </html>
+
 
 
 
